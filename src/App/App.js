@@ -6,6 +6,12 @@ import Input from '../Input';
 import MyButton from '../MyButton';
 import UserList from '../UserList';
 
+const mapsError = {
+    '403' : 'Неверный пароль',
+    '404' : 'Такого пользователя не существует',
+    '409' : 'Пользователь с таким логином существует'
+};
+
 
 export default function App() {
     const [login, setLogin] = useState('');
@@ -60,14 +66,8 @@ export default function App() {
             credentials: "include",
             body: JSON.stringify(user)
         });
-        if (response.status === 404) {
-            setErrorMessage('Такого пользователя не существует');
-            setLoggedStatus('notLogged');
-            return;
-        }
-        if (response.status === 409) {
-            setErrorMessage('Пользователь с таким логином существует');
-            setLoggedStatus('notLogged');
+        if (response.status !== 200) {
+            setError(response.status);
             return;
         }
         const res = await response.json();
@@ -83,6 +83,12 @@ export default function App() {
         if (response.status === 200) {
             setLoggedStatus('notLogged');
         }
+    }
+
+    const setError = (code) => {
+        console.log(mapsError[`${code}`])
+        setErrorMessage(mapsError[`${code}`]);
+        setLoggedStatus('notLogged');
     }
 
     const resetData = () => {
