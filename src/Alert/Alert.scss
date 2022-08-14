@@ -1,0 +1,20 @@
+.alert {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 200px;
+    height: 100px;
+
+    text-align: center;
+    font-size: larger;
+
+    background-color: orangered;
+    color: whitesmoke;
+
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-radius: 7%;
+
+    line-height: 35px; /* same as height! */
+    cursor: pointer;
+}

@@ -1,0 +1,16 @@
+.button-wrapper {
+    width: 60%;
+    margin: 0 auto;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.my-button {
+    width: 300px;
+    height: 100px;
+    background-color: cadetblue;
+    font-size: large;
+    color: aliceblue;
+}
